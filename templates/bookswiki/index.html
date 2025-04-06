@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="container my-3">
+        <table class="table">
+            <thead>
+            <tr class="thead-light" style="background:#2d2d2d;">
+                <th>여러분이 쓰는 지식의 책!</th>
+            </tr>
+            </thead>
+            <tbody style="background:white">
+            <td>
+                Bookswiki에 오신 것을 환영합니다!
+            </td>
+            </tbody>
+
+        </table>
+        <a type="submit" class="btn btn-primary" href="{% url 'bookswiki:document_create' %}">
+            문서 만들기
+        </a>
+    </div>
+
+
+{% endblock %}
+
+
+{% block script %}
+<script type='text/javascript'>
+$(document).ready(function(){
+    $(".page-link").on('click', function() {
+        $("#page").val($(this).data("page"));
+        $("#searchForm").submit();
+    });
+
+    $("#btn_search").on('click', function() {
+        $("#kw").val($(".kw").val());
+        $("#page").val(1);  // 검색버튼을 클릭할 경우 1페이지부터 조회한다.
+        $("#searchForm").submit();
+    });
+
+    $(".so").on('change', function() {
+        $("#so").val($(this).val());
+        $("#page").val(1);
+        $("#searchForm").submit();
+    });
+});
+</script>
+{% endblock %}
+

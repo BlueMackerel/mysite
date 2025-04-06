@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+
+{% load bookswiki_filter %}
+{% block content %}
+
+
+<div style="margin-bottom: 50px;"></div>
+<div class="container-3">
+    <div class="col-11"> <!-- 질문영역 -->
+        <div class="card">
+            <div class="card-subject" style="background:white; padding: 20px; border-radius: 10px;">
+                <div class="card-text" style="color:#2d2d2d;font-size: 20px;">
+                    {{ document.subject }}
+
+
+                    <div class="my-3">
+                        <a href="{% url 'bookswiki:document_modify' document.subject  %}"
+                           class="btn btn-sm btn-outline-secondary">수정</a>
+                        <a href="#" class="delete btn btn-sm btn-outline-secondary"
+                           data-uri="{% url 'bookswiki:document_delete' document.subject  %}">삭제</a>
+                    </div>
+                    <a href="{% url 'bookswiki:modify_list' document.subject %}" class="btn btn-sm btn-outline-secondary" style="color:#2d2d;">수정 내역</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 제목과 본문 사이 간격 추가 -->
+        <div style="margin-bottom: 30px;"></div>
+
+        <div class="card">
+            <div class="card-body" style="background:white; padding: 30px; border-radius: 10px;">
+                <div class="card-text" style="color:#2d2d2d !important; font-size: 18px; line-height: 1.6;">
+                    {{ document.content|marked }}
+                </div>
+
+            </div>
+        </div>
+        <div style="margin-bottom: 50px;"></div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script type='text/javascript'>
+$(document).ready(function(){
+    $(".delete").on('click', function() {
+        if(confirm("정말로 삭제하시겠습니까?")) {
+            location.href = $(this).data('uri');
+        }
+    });
+});
+</script>
+{% endblock %}
+
+{% block static %}
+<style>
+html, body {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.container-3 {
+    overflow: auto !important;
+    max-height: 100vh;
+    position: relative;
+}
+</style>
+{% endblock %}

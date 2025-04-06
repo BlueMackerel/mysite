@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko" style="background:#2d2d2d">
+<head>
+    <style type="text/css">
+    code {
+    color:white;
+    }
+    </style>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,shrink-to-fit=no">
+    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'snow.css' %}">
+
+    <link rel="icon" href="{% static 'favicon.png' %}" type="image/x-icon">
+    <title>Bookswiki📖</title>
+</head>
+<body id="default" style="background:#2d2d2d;">
+
+
+
+{% include "navbar.html" %}
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+
+{% block content %}
+{% endblock %}
+
+    <!-- 기본 템플릿 안에 삽입될 내용 End -->
+    <!-- jQuery JS -->
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <!-- Bootstrap JS -->
+<script src="{% static 'bootstrap.min.js' %}"></script>
+<!--Snow JS-->
+<script src="{% static 'snow.js' %}"></script>
+    <!-- 자바스크립트 Start -->
+{% block script %}
+{% endblock %}
+    <!-- 자바스크립트 End -->
+<!--StyleSheet  Start -->
+
+{% block static %}
+{% endblock %}
+
+<!-- StyleSheet End -->
+
+
+</body>
+</html>

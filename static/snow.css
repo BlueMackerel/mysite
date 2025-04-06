@@ -1,0 +1,14 @@
+body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #000;
+}
+.snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 10px;
+            user-select: none;
+            pointer-events: none;
+            position: fixed;
+}

@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container my-3">
+    <table class="table">
+        <thead>
+        <tr class="thead-light">
+            <th>제목</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% if docs_list %}
+        {% for docs in docs_list %}
+        <tr>
+            <td><a href="{% url 'bookswiki:detail' docs.subject %}">{{ docs.subject }}</a></td>
+        </tr>
+
+        {% endfor %}
+        {% else %}
+        <tr>
+            <td colspan="3" style="color:white;">문서를 찾을 수 없습니다. <a href="{% url 'bookswiki:document_create' %}">문서 만들기</a></td>
+        </tr>
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+
+
+
+{% endblock %}
+
+
+
+{% block static %}
+<style>
+html, body {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.container-3 {
+    overflow: auto !important;
+    max-height: 100vh;
+    position: relative;
+}
+</style>
+{% endblock %}

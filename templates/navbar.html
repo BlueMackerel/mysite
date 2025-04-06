@@ -1,0 +1,28 @@
+<!-- 네비게이션바 -->
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+    <a class="navbar-brand" href="{% url 'bookswiki:index' %}">
+        <img src="{% static 'Logo.png' %}" width="50" height="50"> BooksWiki
+    </a>
+    <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+        {% if user.is_authenticated %}
+        <form action="{% url 'accounts:logout' %}" method="post">{% csrf_token %}<button class="nav-link">{{ user.username }} (로그아웃)</button></form>
+        {% else %}
+        <button class="nav-link"><a class="nav-link" href="{% url 'accounts:login' %}">로그인</a></button>
+        {% endif %}
+
+
+    <div class="col-4 input-group">
+        <form action="{% url 'bookswiki:search' %}" method="GET" class="d-flex w-100">
+            <input type="text" class="form-control kw" name="kw" placeholder="검색어 입력"
+                   value="{{ request.GET.kw|default_if_none:'' }}">
+            <div class="input-group-append">
+                <button class="btn btn-outline-secondary" type="submit">🔎</button>
+            </div>
+        </form>
+    </div>
+</nav>

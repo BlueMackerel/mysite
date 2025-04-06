@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load bookswiki_filter %}
+{% block content %}
+
+{% for value in document.modify_date_list %}
+
+<div style="margin-bottom: 30px;"></div>
+
+
+<div class="card">
+    <div class="card-body" style="background:white; padding: 30px; border-radius: 10px;">
+        <div class="card-text" style="color:#2d2d2d; font-size: 18px; line-height: 1.6;">
+                    {{ value|marked }}
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endfor %}
+<div style="margin-bottom: 50px;"></div>
+
+
+
+<style>
+html, body {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.container-3 {
+    overflow: auto !important;
+    max-height: 100vh;
+    position: relative;
+}
+</style>
+
+
+
+
+{% endblock %}
+
+
+
+
